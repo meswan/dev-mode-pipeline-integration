@@ -5,7 +5,10 @@ node {
         	checkout scm
         }
         stage ('Build') {
-        	mvn liberty:run
+            sh '''
+		    cd finish
+		    mvn liberty:build
+            '''
         }
         stage ('Tests') {
 	        parallel 'static': {
