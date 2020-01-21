@@ -5,7 +5,7 @@ node {
         	checkout scm
         }
         stage ('Build') {
-        	sh "echo 'shell scripts to build project...'"
+        	mvn liberty:run
         }
         stage ('Tests') {
 	        parallel 'static': {
