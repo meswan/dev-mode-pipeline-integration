@@ -3,3 +3,5 @@ Dev mode CICD integration
 
 
 Dev Mode parameters: https://github.com/OpenLiberty/ci.maven/blob/master/docs/dev.md
+
+Based on https://openliberty.io/guides/getting-started.html
