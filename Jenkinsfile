@@ -7,8 +7,7 @@ node {
         stage ('Build') {
             sh '''
 		    cd finish
-		    mvn liberty:start
-		    mvn liberty:stop
+		    ../scripts/test.sh
 		    cd ..
             '''
         }

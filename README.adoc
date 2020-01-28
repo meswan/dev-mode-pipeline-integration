@@ -1,7 +1,6 @@
 # dev-mode-pipeline-integration
 Dev mode CICD integration
 
+This project is for the development and building scenarios structured around dev-mode feature of Liberty.
 
-Dev Mode parameters: https://github.com/OpenLiberty/ci.maven/blob/master/docs/dev.md
-
-Based on https://openliberty.io/guides/getting-started.html
+Findings: https://ibm.ent.box.com/notes/566302666687
