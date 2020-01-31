@@ -1,0 +1,53 @@
+apply plugin: 'liberty'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// configure liberty-gradle-plugin
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.0-M1'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // provided dependencies
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:3.2'
+
+    // test dependencies
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'commons-httpclient:commons-httpclient:3.1'
+    testImplementation 'org.apache.cxf:cxf-rt-rs-client:3.3.4'
+    testImplementation 'org.apache.cxf:cxf-rt-rs-extension-providers:3.3.4'
+    testImplementation 'org.glassfish:javax.json:1.0.4'
+    testImplementation 'javax.xml.bind:jaxb-api:2.3.1'
+}
+
+ext  {
+    liberty.server.var.'default.http.port' = '9080'
+    liberty.server.var.'default.https.port' = '9443'
+    liberty.server.var.'app.context.root' = project.name
+}
+
+test {
+    testLogging {
+        events 'passed', 'skipped', 'failed', 'standardOut'
+        exceptionFormat 'full'
+    }
+    systemProperty 'http.port', liberty.server.var.'default.http.port'
+    systemProperty 'context.root',  project.name
+}
+
+clean.dependsOn 'libertyStop'
