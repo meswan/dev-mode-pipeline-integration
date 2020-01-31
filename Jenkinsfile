@@ -8,6 +8,12 @@ node {
             sh '''
 		    cd finish
 		    ../scripts/test.sh
+
+		    gradle libertyCreate
+		    gradle installFeature
+		    gradle deploy
+            gradle libertyStart
+            gradle libertyStop
 		    cd ..
             '''
         }
