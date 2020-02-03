@@ -13,6 +13,7 @@ node {
 		    gradle installFeature
 		    gradle deploy
             gradle libertyStart
+            gradle test
             gradle libertyStop
 		    cd ..
             '''
