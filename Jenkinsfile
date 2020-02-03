@@ -2,6 +2,7 @@ node {
 
     try {
         stage ('Clone') {
+            cleanWs()
         	checkout scm
         }
         stage ('Build') {
