@@ -29,6 +29,7 @@ else
 fi
 
 docker stop gettingstarted-app && docker rm gettingstarted-app
+docker rmi openliberty-getting-started:1.0-SNAPSHOT
 
 # TEST 2: Building and running the application
 mvn -q clean package liberty:create liberty:install-feature liberty:deploy
